@@ -76,6 +76,7 @@
           type="audio/mpeg"
         />
       </audio>
+      <button id="toggle-dark" class="dark-btn">🌙 Темний режим</button>
       <h1 class="popular">ПОПУЛЯРНЕ</h1>
 
       <div class="out-pop pop-anime">
@@ -239,7 +240,7 @@
     <section>
       <div class="ozn">
         <img class="yumi-tyan" src="./assets/img/yumi-tayn.png" alt="" />
-        <div>
+        <div class="ozn-t0">
           <p class="ozn-t1">
             Ласкаво просимо на YUMI — затишний простір для всіх шанувальників
             аніме та азійської культури!
@@ -451,6 +452,133 @@
           isPlaying = false;
         }
       });
+    </script>
+    <script>
+      const darkBtn = document.getElementById("toggle-dark");
+      const body = document.body;
+
+      if (localStorage.getItem("dark-mode") === "true") {
+        body.classList.add("dark-mode");
+        darkBtn.textContent = "☀️ Світлий режим";
+      }
+
+      darkBtn.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+        const isDark = body.classList.contains("dark-mode");
+        darkBtn.textContent = isDark ? "☀️ Світлий режим" : "🌙 Темний режим";
+        localStorage.setItem("dark-mode", isDark);
+      });
+    </script>
+    <div id="registerModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn close-register">&times;</span>
+        <h2>Реєстрація</h2>
+        <form id="registerForm">
+          <div class="error-message" id="register-error"></div>
+
+          <label for="reg-username">Логін</label>
+          <input
+            type="text"
+            id="reg-username"
+            name="username"
+            placeholder="Введіть логін"
+            required
+          />
+
+          <label for="reg-email">Email</label>
+          <input
+            type="email"
+            id="reg-email"
+            name="email"
+            placeholder="Введіть email"
+            required
+          />
+
+          <label for="reg-password">Пароль</label>
+          <input
+            type="password"
+            id="reg-password"
+            name="password"
+            placeholder="Введіть пароль"
+            required
+          />
+
+          <label for="reg-password-confirm">Підтвердження пароля</label>
+          <input
+            type="password"
+            id="reg-password-confirm"
+            name="password_confirm"
+            placeholder="Підтвердіть пароль"
+            required
+          />
+
+          <button type="submit" class="submit-btn">Зареєструватись</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      const registerModal = document.getElementById("registerModal");
+      const registerBtn = document.querySelector(".auto1");
+      const closeRegister = document.querySelector(".close-register");
+      const registerForm = document.getElementById("registerForm");
+      const errorBox = document.getElementById("register-error");
+
+      registerBtn.addEventListener("click", () => {
+        registerModal.style.display = "flex";
+      });
+
+      closeRegister.addEventListener("click", () => {
+        registerModal.style.display = "none";
+        resetForm();
+      });
+
+      window.addEventListener("click", (e) => {
+        if (e.target === registerModal) {
+          registerModal.style.display = "none";
+          resetForm();
+        }
+      });
+
+      registerForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const username = document.getElementById("reg-username").value.trim();
+        const email = document.getElementById("reg-email").value.trim();
+        const password = document.getElementById("reg-password").value;
+        const confirm = document.getElementById("reg-password-confirm").value;
+
+        let error = "";
+
+        if (username.length < 3) {
+          error = "Логін повинен містити щонайменше 3 символи.";
+        } else if (!validateEmail(email)) {
+          error = "Введіть коректний email.";
+        } else if (password.length < 6) {
+          error = "Пароль повинен містити щонайменше 6 символів.";
+        } else if (password !== confirm) {
+          error = "Паролі не збігаються.";
+        }
+
+        if (error) {
+          errorBox.style.display = "block";
+          errorBox.textContent = error;
+        } else {
+          errorBox.style.display = "none";
+          alert("Реєстрація виконана!");
+          registerModal.style.display = "none";
+          resetForm();
+        }
+      });
+
+      function resetForm() {
+        registerForm.reset();
+        errorBox.textContent = "";
+        errorBox.style.display = "none";
+      }
+
+      function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email.toLowerCase());
+      }
     </script>
   </body>
 </html>
