@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Yumi</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/mob-up.css" />
     <link rel="icon" href="./assets/img/yumi.png" type="image/x-icon" />
   </head>
   <body>
@@ -14,8 +15,50 @@
 
       <div class="menu">
         <a class="men" href="./index.html">ГОЛОВНА</a>
-        <a class="men" href="">ЖАНРИ</a>
-        <a class="men" href="">НОВИНИ</a>
+        <div class="dropdown">
+          <a class="men" href="#">ЖАНРИ</a>
+          <div class="dropdown-content grid-genres">
+            <a href="">Екшн</a>
+            <a href="">Комедія</a>
+            <a href="">Романтика</a>
+            <a href="">Драма</a>
+            <a href="">Фентезі</a>
+            <a href="">Жахи</a>
+            <a href="">Пригоди</a>
+            <a href="">Містика</a>
+            <a href="">Психологія</a>
+            <a href="">Ісекай</a>
+            <a href="">Спорт</a>
+            <a href="">Меха</a>
+            <a href="">Школа</a>
+            <a href="">Вампіри</a>
+            <a href="">Детектив</a>
+            <a href="">Трилер</a>
+            <a href="">Повсякденність</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a class="men" href="">РІК</a>
+          <div class="dropdown-content grid-genres">
+            <a href="">2009</a>
+            <a href="">2010</a>
+            <a href="">2011</a>
+            <a href="">2012</a>
+            <a href="">2013</a>
+            <a href="">2014</a>
+            <a href="">2015</a>
+            <a href="">2016</a>
+            <a href="">2017</a>
+            <a href="">2018</a>
+            <a href="">2019</a>
+            <a href="">2020</a>
+            <a href="">2021</a>
+            <a href="">2022</a>
+            <a href="">2023</a>
+            <a href="">2024</a>
+            <a href="">2025</a>
+          </div>
+        </div>
         <a class="men" href="">КОНТАКТИ</a>
       </div>
       <form class="serc" action="">
@@ -186,5 +229,118 @@
         </div>
       </div>
     </header>
+    <section>
+      <div class="ozn">
+        <img class="yumi-tyan" src="./assets/img/yumi-tayn.png" alt="" />
+        <div>
+          <p class="ozn-t1">
+            Ласкаво просимо на YUMI — затишний простір для всіх шанувальників
+            аніме та азійської культури!
+          </p>
+          <p class="ozn-t2">
+            — це молодий, активно зростаючий онлайн-портал, створений для тих,
+            хто обожнює дивитися аніме, дорами, читати манґу та просто
+            спілкуватися з однодумцями. <br /><br />У нас ти знайдеш:
+          </p>
+          <ul class="ozn-t3">
+            <li>
+              Аніме та дарами у чудовій якості, з різними варіантами озвучки та
+              субтитрів.
+            </li>
+            <li>Перегляд без реєстрації та обмежень</li>
+            <li>Можливість скачати улюблені тайтли</li>
+            <li>
+              Постійне оновлення бази — наші релізери уважно стежать за
+              новинками, щоб ти міг дивитися їх одним із перших
+            </li>
+          </ul>
+          <p class="ozn-t4">
+            Хочеш обговорити переглянуте, поділитися враженнями, поставити
+            запитання або дати пораду? У нас завжди знайдуться цікаві
+            співрозмовники та душевна атмосфера.
+          </p>
+          <br />
+          <p class="ozn-t5">
+            — це портал, де все просто: без реєстрації, без смс та зайвих
+            підтверджень. Просто заходь і дивись. Тут і зараз. Безкоштовно. Із
+            задоволенням. 💜
+          </p>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="podval">
+        <p>
+          <img
+            class="podval-img"
+            src="./assets/img/yumi.png"
+            width="30px"
+            height="30px"
+            alt=""
+          />
+          © 2025 YUMI · Всі права захищені · Матеріал та відео тільки для
+          ознайомлення та не передбачають скачування.
+          <span style="color: rgb(167, 17, 17)"
+            ><u>Вікове обмеження 16+</u></span
+          >
+        </p>
+      </div>
+    </footer>
+    <div id="authModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2 class="auturiz">Авторизація</h2>
+        <form id="authForm">
+          <label for="username">Логін</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Введіть логін"
+            required
+          />
+
+          <label for="password">Пароль</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Введіть пароль"
+            required
+          />
+
+          <button type="submit" class="submit-btn">Увійти</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const authModal = document.getElementById("authModal");
+      const authBtn = document.querySelector(".auto");
+      const closeBtn = document.querySelector(".close-btn");
+
+      authBtn.addEventListener("click", () => {
+        authModal.style.display = "flex";
+      });
+
+      closeBtn.addEventListener("click", () => {
+        authModal.style.display = "none";
+      });
+
+      window.addEventListener("click", (event) => {
+        if (event.target === authModal) {
+          authModal.style.display = "none";
+        }
+      });
+
+      document.getElementById("authForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Форма відправлена!");
+        authModal.style.display = "none";
+      });
+    </script>
+    <div id="anime-helper">
+      <img class="aniitachi" src="./assets/img/5Mys.gif" alt="Аніме Помічник" />
+    </div>
   </body>
 </html>
