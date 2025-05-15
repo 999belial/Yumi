@@ -396,3 +396,102 @@ footer {
   border-radius: 15px;
   box-shadow: 0 0 15px rgba(157, 149, 204, 0.5);
 }
+.rules {
+  margin-left: 20px;
+  background-color: rgba(157, 149, 204, 0.99);
+  border: none;
+  border-radius: 8px;
+  padding: 5px 15px;
+  font-size: 16px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.rules:hover {
+  background-color: rgb(157, 13, 219);
+}
+
+.rules-content {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.rules-content h2 {
+  color: rgba(157, 149, 204, 0.99);
+  margin-bottom: 20px;
+}
+
+.rules-text p,
+.rules-text ul {
+  text-align: left;
+  font-size: 17px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.rules-text ul {
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #1a0a3a;
+  color: #eee;
+  border-radius: 15px;
+  padding: 30px;
+  width: 90%;
+  max-width: 700px;
+  box-shadow: 0 0 20px rgba(157, 149, 204, 0.7);
+  position: relative;
+  font-family: Arial, sans-serif;
+  overflow: auto;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 26px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #fff;
+}
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: rgba(157, 149, 204, 0.9);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-family: Impact, sans-serif;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 0 10px rgba(157, 149, 204, 0.5);
+  transition: background-color 0.3s;
+}
+
+.music-btn:hover {
+  background-color: rgb(157, 13, 219);
+}
