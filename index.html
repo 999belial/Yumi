@@ -360,72 +360,13 @@
       </div>
     </div>
 
-    <script>
-      const authModal = document.getElementById("authModal");
-      const authBtn = document.querySelector(".auto");
-      const closeAuth = document.querySelector(".close-auth");
-
-      authBtn.addEventListener("click", () => {
-        authModal.style.display = "flex";
-      });
-
-      closeAuth.addEventListener("click", () => {
-        authModal.style.display = "none";
-      });
-
-      window.addEventListener("click", (event) => {
-        if (event.target === authModal) {
-          authModal.style.display = "none";
-        }
-      });
-      document.getElementById("authForm").addEventListener("submit", (e) => {
-        e.preventDefault();
-        alert("Форма відправлена!");
-        authModal.style.display = "none";
-      });
-    </script>
+    <script src="./assets/js/auth.js"></script>
     <div id="anime-helper">
       <img class="aniitachi" src="./assets/img/5Mys.gif" alt="Аніме Помічник" />
     </div>
-    <script>
-      const music = document.getElementById("bg-music");
-      const toggleBtn = document.getElementById("toggle-music");
-      let isPlaying = false;
+    <script src="./assets/js/music.js"></script>
 
-      toggleBtn.addEventListener("click", () => {
-        if (!isPlaying) {
-          music
-            .play()
-            .then(() => {
-              toggleBtn.textContent = "🔇 Вимкнути музику";
-              isPlaying = true;
-            })
-            .catch((err) => {
-              console.log("Автовідтворення заборонене:", err);
-            });
-        } else {
-          music.pause();
-          toggleBtn.textContent = "🎵 Увімкнути музику";
-          isPlaying = false;
-        }
-      });
-    </script>
-    <script>
-      const darkBtn = document.getElementById("toggle-dark");
-      const body = document.body;
-
-      if (localStorage.getItem("dark-mode") === "true") {
-        body.classList.add("dark-mode");
-        darkBtn.textContent = "☀️ Світлий режим";
-      }
-
-      darkBtn.addEventListener("click", () => {
-        body.classList.toggle("dark-mode");
-        const isDark = body.classList.contains("dark-mode");
-        darkBtn.textContent = isDark ? "☀️ Світлий режим" : "🌙 Темний режим";
-        localStorage.setItem("dark-mode", isDark);
-      });
-    </script>
+    <script src="./assets/js/darklight.js"></script>
     <div id="registerModal" class="modal">
       <div class="modal-content">
         <span class="close-btn close-register">&times;</span>
@@ -473,83 +414,9 @@
         </form>
       </div>
     </div>
-    <script>
-      const registerModal = document.getElementById("registerModal");
-      const registerBtn = document.querySelector(".auto1");
-      const closeRegister = document.querySelector(".close-register");
-      const registerForm = document.getElementById("registerForm");
-      const errorBox = document.getElementById("register-error");
-
-      registerBtn.addEventListener("click", () => {
-        registerModal.style.display = "flex";
-      });
-
-      closeRegister.addEventListener("click", () => {
-        registerModal.style.display = "none";
-        resetForm();
-      });
-
-      window.addEventListener("click", (e) => {
-        if (e.target === registerModal) {
-          registerModal.style.display = "none";
-          resetForm();
-        }
-      });
-
-      registerForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const username = document.getElementById("reg-username").value.trim();
-        const email = document.getElementById("reg-email").value.trim();
-        const password = document.getElementById("reg-password").value;
-        const confirm = document.getElementById("reg-password-confirm").value;
-
-        let error = "";
-
-        if (username.length < 3) {
-          error = "Логін повинен містити щонайменше 3 символи.";
-        } else if (!validateEmail(email)) {
-          error = "Введіть коректний email.";
-        } else if (password.length < 6) {
-          error = "Пароль повинен містити щонайменше 6 символів.";
-        } else if (password !== confirm) {
-          error = "Паролі не збігаються.";
-        }
-
-        if (error) {
-          errorBox.style.display = "block";
-          errorBox.textContent = error;
-        } else {
-          errorBox.style.display = "none";
-          alert("Реєстрація виконана!");
-          registerModal.style.display = "none";
-          resetForm();
-        }
-      });
-
-      function resetForm() {
-        registerForm.reset();
-        errorBox.textContent = "";
-        errorBox.style.display = "none";
-      }
-
-      function validateEmail(email) {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(email.toLowerCase());
-      }
-    </script>
-    <script>
-      const burger = document.getElementById("burger");
-      const navMenu = document.getElementById("navMenu");
-
-      burger.addEventListener("click", () => {
-        navMenu.classList.toggle("show");
-      });
-
-      document.querySelectorAll(".men").forEach((link) => {
-        link.addEventListener("click", () => {
-          navMenu.classList.remove("show");
-        });
-      });
+    <script src="./assets/js/register.js"></script>
+    <script src="./assets/js/burger-menu.js">
+     
     </script>
     <div id="contactModal" class="modal">
       <div class="modal-content contact-modal">
@@ -572,45 +439,11 @@
         </form>
       </div>
     </div>
-    <script>
-      const contactLink = document.getElementById("contactLink");
-      const contactModal = document.getElementById("contactModal");
-      const closeBtn = document.getElementById("closeContact");
-
-      contactLink.addEventListener("click", (e) => {
-        e.preventDefault();
-        contactModal.style.display = "flex";
-      });
-
-      closeBtn.addEventListener("click", () => {
-        contactModal.style.display = "none";
-      });
-
-      window.addEventListener("click", (e) => {
-        if (e.target === contactModal) {
-          contactModal.style.display = "none";
-        }
-      });
+    <script src="./assets/js/contact.js">
+      
     </script>
-    <script>
-      const rulesBtn = document.getElementById("rulesBtn");
-      const rulesModal = document.getElementById("rulesModal");
-      const closeRules = document.getElementById("closeRules");
-
-      rulesBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        rulesModal.style.display = "flex";
-      });
-
-      closeRules.addEventListener("click", () => {
-        rulesModal.style.display = "none";
-      });
-
-      window.addEventListener("click", (e) => {
-        if (e.target === rulesModal) {
-          rulesModal.style.display = "none";
-        }
-      });
+    <script src="./assets/js/rules.js">
+      
     </script>
   </body>
 </html>
