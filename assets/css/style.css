@@ -729,45 +729,7 @@ body.dark-mode .nextwath {
   background-color: rgb(157, 13, 219);
   color: #fff;
 }
-.anime-list {
-  max-width: 900px;
-  margin: 30px auto 60px auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 20px;
-  font-family: Arial, sans-serif;
-  color: #ddd;
-}
 
-.anime-card {
-  background-color: #1a0a3a;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 0 15px rgba(157, 149, 204, 0.6);
-  text-align: center;
-  padding-bottom: 10px;
-}
-
-.anime-card img {
-  width: 100%;
-  height: auto;
-  border-bottom: 1px solid rgba(157, 149, 204, 0.5);
-}
-
-.anime-card h3 {
-  margin: 10px 5px 5px;
-  font-size: 18px;
-  font-family: Impact, sans-serif;
-  color: rgba(157, 149, 204, 0.95);
-}
-
-.anime-card p {
-  font-size: 14px;
-  padding: 0 10px;
-  height: 60px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 .modal {
   display: none;
   position: fixed;
