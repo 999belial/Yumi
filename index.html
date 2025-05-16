@@ -17,25 +17,28 @@
       <div class="menu" id="navMenu">
         <a class="men" href="./index.html">ГОЛОВНА</a>
         <div class="dropdown">
-          <a class="men" href="#">ЖАНРИ</a>
+          <a class="men" href="#" id="filter-genre">ЖАНРИ</a>
           <div class="dropdown-content grid-genres">
-            <a href="">Екшн</a>
-            <a href="">Комедія</a>
-            <a href="">Романтика</a>
-            <a href="">Драма</a>
-            <a href="">Фентезі</a>
-            <a href="">Жахи</a>
-            <a href="">Пригоди</a>
-            <a href="">Містика</a>
-            <a href="">Психологія</a>
-            <a href="">Ісекай</a>
-            <a href="">Спорт</a>
-            <a href="">Меха</a>
-            <a href="">Школа</a>
-            <a href="">Вампіри</a>
-            <a href="">Детектив</a>
-            <a href="">Трилер</a>
-            <a href="">Повсякденність</a>
+            <a href="genre.html?genre=Action" class="genre-item">Екшн</a>
+            <a href="genre.html?genre=Comedy" class="genre-item">Комедія</a>
+            <a href="genre.html?genre=Romance" class="genre-item">Романтика</a>
+            <a href="genre.html?genre=Drama" class="genre-item">Драма</a>
+            <a href="genre.html?genre=Fantasy" class="genre-item">Фентезі</a>
+            <a href="genre.html?genre=Horrors" class="genre-item">Жахи</a>
+            <a href="genre.html?genre=Adventures" class="genre-item">Пригоди</a>
+            <a href="genre.html?genre=Mysticism" class="genre-item">Містика</a>
+            <a href="genre.html?genre=Psychology" class="genre-item"
+              >Психологія</a
+            >
+            <a href="genre.html?genre=Isekai" class="genre-item">Ісекай</a>
+            <a href="genre.html?genre=Sport" class="genre-item">Спорт</a>
+            <a href="genre.html?genre=Mecha" class="genre-item">Меха</a>
+            <a href="genre.html?genre=School" class="genre-item">Школа</a>
+            <a href="genre.html?genre=Vampire"genre.html?genre=Detective" class="genre-item">Детектив</a>
+            <a href="genre.html?genre=Thriller" class="genre-item">Трилер</a>
+            <a href="genre.html?genre=Everyday_life" class="genre-item"
+              >Повсякденність</a
+            >
           </div>
         </div>
         <div class="dropdown">
@@ -70,6 +73,7 @@
       <button class="auto1">Реєстрація</button>
     </nav>
     <header>
+      <section id="anime-list" class="anime-list"></section>
       <button id="toggle-music" class="music-btn">🎵 Увімкнути музику</button>
       <audio id="bg-music" loop>
         <source
@@ -308,14 +312,14 @@
           <span style="color: rgb(167, 17, 17)"
             ><u>Вікове обмеження 16+</u></span
           >
-          <button class="rules">Правила</button>
+          <a href="#" id="rulesBtn" class="rules-link">ПРАВИЛА</a>
         </p>
       </div>
     </footer>
 
     <div id="rulesModal" class="modal">
-      <div class="modal-content rules-content">
-        <span class="close-btn close-rules">&times;</span>
+     <div class="modal-content">
+       <span class="close-btn" id="closeRules">&times;</span>
         <h2>Загальні правила поведінки на сайті</h2>
         <div class="rules-text">
           <p>
@@ -405,8 +409,8 @@
 
     <script>
       const authModal = document.getElementById("authModal");
-      const authBtn = document.querySelector(".auto"); // кнопка "Авторизація"
-      const closeAuth = document.querySelector(".close-auth"); // Тепер точно!
+      const authBtn = document.querySelector(".auto");
+      const closeAuth = document.querySelector(".close-auth");
 
       authBtn.addEventListener("click", () => {
         authModal.style.display = "flex";
@@ -596,7 +600,7 @@
     </script>
     <div id="contactModal" class="modal">
       <div class="modal-content contact-modal">
-        <span class="close-btn close-contact">&times;</span>
+        <span class="close-btn" id="closeContact">&times;</span>
         <h2>📬 Зв'язок з нами</h2>
 
         <div class="contact-info">
@@ -616,32 +620,44 @@
       </div>
     </div>
     <script>
-      const contactLink = document.getElementById("contactLink");
-      const contactModal = document.getElementById("contactModal");
-      const closeContact = document.querySelector(".close-contact");
-      const contactForm = document.querySelector(".contact-form");
+  const contactLink = document.getElementById('contactLink');
+  const contactModal = document.getElementById('contactModal');
+  const closeBtn = document.getElementById('closeContact');
 
-      contactLink.addEventListener("click", (e) => {
-        e.preventDefault();
-        contactModal.style.display = "flex";
-      });
+  contactLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    contactModal.style.display = 'flex';
+  });
 
-      closeContact.addEventListener("click", () => {
-        contactModal.style.display = "none";
-      });
+  closeBtn.addEventListener('click', () => {
+    contactModal.style.display = 'none';
+  });
 
-      window.addEventListener("click", (e) => {
-        if (e.target === contactModal) {
-          contactModal.style.display = "none";
-        }
-      });
+  window.addEventListener('click', (e) => {
+    if (e.target === contactModal) {
+      contactModal.style.display = 'none';
+    }
+  });
+</script>
+<script>
+  const rulesBtn = document.getElementById('rulesBtn');
+  const rulesModal = document.getElementById('rulesModal');
+  const closeRules = document.getElementById('closeRules');
 
-      contactForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-        alert("Ваше повідомлення надіслано!");
-        contactModal.style.display = "none";
-        this.reset();
-      });
-    </script>
+  rulesBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    rulesModal.style.display = 'flex';
+  });
+
+  closeRules.addEventListener('click', () => {
+    rulesModal.style.display = 'none';
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === rulesModal) {
+      rulesModal.style.display = 'none';
+    }
+  });
+</script>
   </body>
 </html>
