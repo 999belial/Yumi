@@ -655,3 +655,11 @@ body.dark-mode .nextwath {
   font-size: 15px;
   display: none;
 }
+.burger {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+  padding: 10px;
+  z-index: 9999;
+}

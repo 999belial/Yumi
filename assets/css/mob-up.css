@@ -12,28 +12,6 @@
     margin-bottom: 10px;
   }
 
-  .menu {
-    display: flex;
-    flex-direction: column;
-    margin-top: 0;
-    width: 100%;
-  }
-
-  .men {
-    margin: 8px 0;
-    font-size: 18px;
-    text-align: center;
-  }
-
-  .dropdown-content {
-    position: static;
-    min-width: auto;
-    grid-template-columns: repeat(2, 1fr);
-    padding: 5px 0;
-    border: none;
-    box-shadow: none;
-  }
-
   .dropdown:hover .dropdown-content {
     display: block;
   }
@@ -57,20 +35,19 @@
     font-size: 16px;
   }
 
-  .auto, .auto1 {
+  .auto,
+  .auto1 {
     width: 45%;
     height: 40px;
     font-size: 16px;
     margin: 1px 2.5%;
   }
 
-  .auto{
+  .auto {
     left: 2.5px;
-   
   }
-  .auto1{
+  .auto1 {
     position: relative;
-    
   }
   header .popular {
     font-size: 28px;
@@ -132,9 +109,45 @@
     padding: 10px 5px;
   }
 }
-@media (max-width: 768px){
-.dropdown{
-    left: 165px;
-    padding: 5px;
-}
+@media (max-width: 768px) {
+  .burger {
+    display: block;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: #111;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+
+  .men {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #fff;
+  }
+
+  .dropdown-content {
+    position: static;
+    transform: none;
+    background-color: #222;
+    min-width: 100%;
+    box-shadow: none;
+    margin-top: 5px;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
 }

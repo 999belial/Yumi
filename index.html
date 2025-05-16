@@ -12,8 +12,9 @@
     <div class="bg"></div>
     <nav>
       <img class="logo" src="./assets/img/logoyumi.png" alt="" />
+      <div class="burger" id="burger">&#9776;</div>
 
-      <div class="menu">
+      <div class="menu" id="navMenu">
         <a class="men" href="./index.html">ГОЛОВНА</a>
         <div class="dropdown">
           <a class="men" href="#">ЖАНРИ</a>
@@ -579,6 +580,20 @@
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(email.toLowerCase());
       }
+    </script>
+    <script>
+      const burger = document.getElementById("burger");
+      const navMenu = document.getElementById("navMenu");
+
+      burger.addEventListener("click", () => {
+        navMenu.classList.toggle("show");
+      });
+
+      document.querySelectorAll(".men").forEach((link) => {
+        link.addEventListener("click", () => {
+          navMenu.classList.remove("show");
+        });
+      });
     </script>
   </body>
 </html>
