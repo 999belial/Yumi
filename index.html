@@ -377,7 +377,7 @@
 
     <div id="authModal" class="modal">
       <div class="modal-content">
-        <span class="close-btn">&times;</span>
+        <span class="close-btn close-auth">&times;</span>
         <h2 class="auturiz">Авторизація</h2>
         <form id="authForm">
           <label for="username">Логін</label>
@@ -405,14 +405,14 @@
 
     <script>
       const authModal = document.getElementById("authModal");
-      const authBtn = document.querySelector(".auto");
-      const closeBtn = document.querySelector(".close-btn");
+      const authBtn = document.querySelector(".auto"); // кнопка "Авторизація"
+      const closeAuth = document.querySelector(".close-auth"); // Тепер точно!
 
       authBtn.addEventListener("click", () => {
         authModal.style.display = "flex";
       });
 
-      closeBtn.addEventListener("click", () => {
+      closeAuth.addEventListener("click", () => {
         authModal.style.display = "none";
       });
 
@@ -421,7 +421,6 @@
           authModal.style.display = "none";
         }
       });
-
       document.getElementById("authForm").addEventListener("submit", (e) => {
         e.preventDefault();
         alert("Форма відправлена!");
