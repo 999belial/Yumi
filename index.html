@@ -60,7 +60,7 @@
             <a href="">2025</a>
           </div>
         </div>
-        <a class="men" href="">КОНТАКТИ</a>
+        <a class="men" href="#" id="contactLink">КОНТАКТИ</a>
       </div>
       <form class="serc" action="">
         <input type="text" name="text" class="search" placeholder="Пошук..." />
@@ -592,6 +592,55 @@
         link.addEventListener("click", () => {
           navMenu.classList.remove("show");
         });
+      });
+    </script>
+    <div id="contactModal" class="modal">
+      <div class="modal-content contact-modal">
+        <span class="close-btn close-contact">&times;</span>
+        <h2>📬 Зв'язок з нами</h2>
+
+        <div class="contact-info">
+          <p><strong>Email:</strong> yumi.moder@gmail.com</p>
+        </div>
+
+        <form class="contact-form">
+          <input type="text" placeholder="Ваше ім’я" required />
+          <input type="email" placeholder="Email" required />
+          <textarea
+            placeholder="Ваше повідомлення..."
+            rows="4"
+            required
+          ></textarea>
+          <button type="submit">Надіслати</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      const contactLink = document.getElementById("contactLink");
+      const contactModal = document.getElementById("contactModal");
+      const closeContact = document.querySelector(".close-contact");
+      const contactForm = document.querySelector(".contact-form");
+
+      contactLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        contactModal.style.display = "flex";
+      });
+
+      closeContact.addEventListener("click", () => {
+        contactModal.style.display = "none";
+      });
+
+      window.addEventListener("click", (e) => {
+        if (e.target === contactModal) {
+          contactModal.style.display = "none";
+        }
+      });
+
+      contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert("Ваше повідомлення надіслано!");
+        contactModal.style.display = "none";
+        this.reset();
       });
     </script>
   </body>

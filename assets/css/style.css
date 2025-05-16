@@ -4,7 +4,6 @@
   padding: 0;
 }
 body {
- 
   background-color: #000000;
   background-image: url(../img/anime/backgraund.png);
   background-repeat: no-repeat;
@@ -12,7 +11,6 @@ body {
   background-size: cover;
   background-position: top center;
 }
-
 
 .logo {
   width: 200px;
@@ -225,7 +223,7 @@ nav {
   padding: 2px;
   box-shadow: #00000083 15px 20px;
 }
-.ozn-t0{
+.ozn-t0 {
   padding-left: 2em;
 }
 .yumi-tyan {
@@ -522,7 +520,6 @@ footer {
   background-color: rgb(157, 13, 219);
 }
 
-
 body.dark-mode {
   background-color: #0e0e0e !important;
   background-image: none !important;
@@ -550,19 +547,14 @@ body.dark-mode {
   background-image: none !important;
 }
 
-
-
-
 body.dark-mode .menu a {
   color: #ddd;
 }
-
 
 body.dark-mode footer {
   background-color: #101010;
   color: #ccc;
 }
-
 
 body.dark-mode .popular,
 body.dark-mode .nextwath {
@@ -572,8 +564,10 @@ body.dark-mode .nextwath {
   display: none;
   position: fixed;
   z-index: 9999;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(4px);
   justify-content: center;
@@ -662,4 +656,76 @@ body.dark-mode .nextwath {
   color: white;
   padding: 10px;
   z-index: 9999;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #1a0a3a;
+  border-radius: 15px;
+  padding: 30px;
+  width: 90%;
+  max-width: 600px;
+  color: #ddd;
+  box-shadow: 0 0 20px rgba(157, 149, 204, 0.7);
+  font-family: Arial, sans-serif;
+  position: relative;
+  text-align: center;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #fff;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background-color: #2e1b5c;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.contact-form button {
+  background-color: rgba(157, 149, 204, 0.99);
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background-color: rgb(157, 13, 219);
+  color: #fff;
 }
