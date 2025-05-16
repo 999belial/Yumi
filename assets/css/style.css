@@ -103,7 +103,9 @@ nav {
   text-align: center;
   font-size: 35px;
   color: rgba(255, 255, 255, 0.99);
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 .out-pop {
   justify-content: center;
@@ -157,7 +159,9 @@ nav {
   text-align: center;
   font-size: 35px;
   color: rgba(255, 255, 255, 0.99);
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 .next {

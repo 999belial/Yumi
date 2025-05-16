@@ -3,13 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Атака Титанів – Перегляд</title>
+    <title>Атака Титанів</title>
+    <link rel="icon" href="../assets/img/yumi.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
       body {
         margin: 0;
         padding: 0;
         background-color: #000;
-        background-image: url("assets/img/anime/backgraund.png");
+        background-image: url("../assets/img/backg.png");
         background-size: cover;
         background-position: top center;
         color: #ddd;
@@ -45,6 +53,8 @@
         font-size: 15px;
         color: #aaa;
         margin-bottom: 20px;
+        padding-top: 1em;
+        padding-left: 5em;
       }
       .description {
         font-size: 16px;
@@ -52,6 +62,7 @@
         color: #ccc;
         margin-bottom: 30px;
         text-align: justify;
+        padding-left: 2em;
       }
       .video-wrapper {
         position: relative;
@@ -88,17 +99,44 @@
         transition: background 0.3s;
       }
       .episodes button:hover {
-        background: rgb(157, 13, 219);
+        background: rgb(133, 88, 153);
         color: #fff;
       }
+      .img-ava {
+        border-radius: 2em;
+      }
+      .info-flex {
+        display: flex;
+        flex-direction: row;
+        width: 45vw;
+      }
+      .nameanime {
+        padding-left: 1.5em;
+        color: #ccc;
+        font-family: "Roboto", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+      }
+
       @media (max-width: 600px) {
         .container {
           margin: 15px;
           padding: 15px;
         }
+        .info-flex {
+          display: flex;
+          flex-direction: column;
+        }
         nav {
           font-size: 18px;
           padding: 15px;
+        }
+        .description {
+          padding-left: 1em;
+          width: 19em;
+        }
+        .img-ava {
+          margin-left: 1em;
         }
       }
     </style>
@@ -109,13 +147,44 @@
     </nav>
 
     <div class="container">
-      <h1>Атака Титанів</h1>
-      <div class="info">Рік випуску: <strong>2013</strong></div>
-      <div class="description">
-        Століттями людство перебувало на межі вимирання через гігантських істот,
-        відомих як титани. Люди сховалися за високими стінами, але одного дня
-        титани прорвали оборону. Ерен Єгер вирішує знищити всіх титанів після
-        того, як втрачає сім’ю.
+      <h1 class="nameanime">Атака Титанів</h1>
+      <div class="info-flex">
+        <img
+          class="img-ava"
+          src="../assets/img/atacktit.jpg"
+          width="300em"
+          height="500em"
+          alt=""
+        />
+
+        <div class="description">
+          Століття тому, на Землі сталося те, чого найбільше боялося людство.
+          Нізвідки з'явилися гіганти, вони мали великий зріст, але були
+          бездумними. Величезних істот нарекли титанами. Вони трощили все, що
+          траплялося на їхньому шляху, а на сніданок харчувалися людьми, які
+          відчайдушно захищалися, вступаючи з ними в протистояння. Але всі
+          спроби подолати людожерів виявилися марними. Титанів не могла знищити
+          жодна високотехнологічна зброя XIX століття і ті, кому вдалося дивом
+          вижити, вирішили звести три величезні стіни. Будівлі вийшли
+          високоміцні та мали колосальну висоту. Монстри не могли пробитися
+          крізь каміння та перелізти через огорожі. Незабаром люди заспокоїлися
+          і почали вести мирне існування. Заради безпеки, населенням було
+          створено спеціальний Легіон Розвідки, до якого відбиралися лише
+          найкращі війни. Але солдати цілими днями лише байдикували і грали в
+          кості, навіть не думаючи про битви, поки в їхніх лавах не з'явився
+          Ерен Єгер — син вченого, який зробив для міста чимало добрих справ.
+          Хлопець не розумів, чому захисники сидять без діла, і не хочуть
+          розчищати території від монстрів, щоб назавжди покінчити із
+          ув'язненням, яке робить їх схожими на худобу.
+        </div>
+      </div>
+
+      <div class="info">
+        <strong>Рік виходу:</strong> 2013 <br /><strong>Жанр:</strong> пригоди,
+        фантастика <br /><strong>Тип:</strong> ТБ <br /><strong
+          >Кількість серій:</strong
+        >
+        25 (25 хв.) <br /><strong>Режисер:</strong> Аракі Тецуро
       </div>
 
       <div class="video-wrapper" id="video-container">
