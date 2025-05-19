@@ -33,6 +33,7 @@ authForm.addEventListener("submit", (e) => {
       if (data.success) {
         alert("👋 Вітаємо, ви ввійшли!");
         authModal.style.display = "none";
+        window.location.href = '/profile.html';
         authForm.reset();
       } else {
         alert(data.error || "❌ Невірний логін або пароль.");

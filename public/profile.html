@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Особистий кабінет</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="profile-container" style="padding: 2em; max-width: 600px; margin: auto; color: #fff;">
+    <h1>👤 Особистий кабінет</h1>
+    <img id="avatar" src="assets/img/default.png" width="150" style="border-radius: 50%;" />
+
+    <form id="profileForm">
+      <label>Ім’я:</label>
+      <input type="text" id="username" required />
+
+      <label>Email:</label>
+      <input type="email" id="email" />
+
+      <label>Вік:</label>
+      <input type="number" id="age" min="0" />
+
+      <label>Стать:</label>
+      <select id="gender">
+        <option value="">-- не вказано --</option>
+        <option value="чоловіча">Чоловіча</option>
+        <option value="жіноча">Жіноча</option>
+        <option value="інше">Інше</option>
+      </select>
+
+      <label>Улюблений жанр аніме:</label>
+      <input type="text" id="favorite" />
+
+      <button type="submit">💾 Зберегти зміни</button>
+    </form>
+
+    <button onclick="logout()" style="margin-top: 1rem;">🚪 Вийти</button>
+  </div>
+
+  <script>
+    const form = document.getElementById("profileForm");
+
+    fetch('/api/session')
+      .then(res => res.json())
+      .then(data => {
+        if (!data.user) {
+          location.href = '/';
+          return;
+        }
+
+        const u = data.user;
+        document.getElementById("username").value = u.username || "";
+        document.getElementById("email").value = u.email || "";
+        document.getElementById("age").value = u.age || "";
+        document.getElementById("gender").value = u.gender || "";
+        document.getElementById("favorite").value = u.favorite || "";
+        document.getElementById("avatar").src = 'assets/img/' + (u.avatar || 'default.png');
+      });
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const body = {
+        username: form.username.value,
+        email: form.email.value,
+        age: form.age.value,
+        gender: form.gender.value,
+        favorite: form.favorite.value
+      };
+
+      fetch('/api/update-profile', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Профіль оновлено");
+          location.reload();
+        } else {
+          alert(data.error || "❌ Помилка оновлення");
+        }
+      });
+    });
+
+    function logout() {
+      fetch('/api/logout', { method: 'POST' })
+        .then(() => location.href = '/');
+    }
+  </script>
+</body>
+</html>
