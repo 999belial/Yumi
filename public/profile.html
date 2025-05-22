@@ -6,11 +6,16 @@
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
+  <a href="/index.html" class="back-home">🏠 На головну</a>
+
+  
   <div class="profile-container" style="padding: 2em; max-width: 600px; margin: auto; color: #fff;">
     <h1>👤 Особистий кабінет</h1>
-    <img id="avatar" src="assets/img/default.png" width="150" style="border-radius: 50%;" />
+    <img id="avatar" src="assets/img/default.png" />
 
     <form id="profileForm">
+      <label for="avatarUpload" class="upload-btn">📷 Змінити аватар</label>
+<input type="file" id="avatarUpload" accept="image/*" style="display: none;" />
       <label>Ім’я:</label>
       <input type="text" id="username" required />
 
@@ -89,5 +94,30 @@
         .then(() => location.href = '/');
     }
   </script>
+  <script>
+  // після завантаження сторінки
+  document.getElementById('avatarUpload').addEventListener('change', function () {
+    const file = this.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append('avatar', file);
+
+    fetch('/api/upload-avatar', {
+      method: 'POST',
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        alert('✅ Аватар оновлено!');
+        document.getElementById('avatar').src = 'assets/img/' + data.avatar;
+      } else {
+        alert(data.error || '❌ Помилка оновлення аватару');
+      }
+    });
+  });
+</script>
+
 </body>
 </html>

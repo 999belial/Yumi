@@ -1,3 +1,24 @@
+
+const multer = require('multer');
+const fs = require('fs');
+
+// Папка для збереження аватарів
+const AVATAR_DIR = './public/assets/img/';
+
+// Налаштування Multer
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, AVATAR_DIR);
+  },
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    const filename = Date.now() + ext;
+    cb(null, filename);
+  }
+});
+const upload = multer({ storage });
+
+
 const express = require('express');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
@@ -44,23 +65,29 @@ db.run(`
 app.post('/api/register', async (req, res) => {
   const { username, email, password } = req.body;
   const avatar = 'default.png';
-  try {
-    const hash = await bcrypt.hash(password, 10);
-    db.run(
-      `INSERT INTO users (username, email, password, avatar) VALUES (?, ?, ?, ?)`,
-      [username, email, hash, avatar],
-      function (err) {
-        if (err) {
-          return res.status(400).json({ error: 'Користувач вже існує.' });
+
+  // Перевірка: чи існує email або username
+  db.get(`SELECT * FROM users WHERE username = ? OR email = ?`, [username, email], async (err, user) => {
+    if (user) {
+      return res.status(400).json({ error: 'Логін або email вже використовується.' });
+    }
+
+    try {
+      const hash = await bcrypt.hash(password, 10);
+      db.run(
+        `INSERT INTO users (username, email, password, avatar) VALUES (?, ?, ?, ?)`,
+        [username, email, hash, avatar],
+        function (err) {
+          if (err) return res.status(400).json({ error: 'Помилка при створенні користувача.' });
+          req.session.user = username;
+          res.json({ success: true });
         }
-        req.session.user = username;
-        res.json({ success: true });
-      }
-    );
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Внутрішня помилка сервера' });
-  }
+      );
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Внутрішня помилка сервера' });
+    }
+  });
 });
 
 // 🔑 ВХІД
@@ -131,4 +158,14 @@ app.post('/api/logout', (req, res) => {
 // ▶ СТАРТ СЕРВЕРА
 app.listen(PORT, () => {
   console.log(`✅ Сервер працює на http://localhost:${PORT}`);
+});
+
+app.post('/api/upload-avatar', upload.single('avatar'), (req, res) => {
+  if (!req.session.user) return res.status(403).json({ error: 'Неавторизовано' });
+  const avatarFile = req.file.filename;
+
+  db.run(`UPDATE users SET avatar = ? WHERE username = ?`, [avatarFile, req.session.user], (err) => {
+    if (err) return res.status(500).json({ error: 'Помилка оновлення аватару' });
+    res.json({ success: true, avatar: avatarFile });
+  });
 });

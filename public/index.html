@@ -29,8 +29,20 @@
         <input type="text" name="text" class="search" placeholder="Пошук..." />
         <input type="submit" name="submit" class="search1" value="Знайти" />
       </form>
-      <button class="auto">Авторизація</button>
-      <button class="auto1">Реєстрація</button>
+      <div id="guest-actions">
+        <button class="auto">Авторизація</button>
+        <button class="auto1">Реєстрація</button>
+      </div>
+      <div id="user-actions" style="display: none;" class="user-status">
+  <a href="/profile.html" title="Профіль">
+    <div class="avatar-wrapper">
+      <img src="assets/img/default.png" alt="Аватар" id="user-avatar" />
+      <span class="status-indicator online"></span>
+    </div>
+  </a>
+  <button id="logoutBtn">🚪 Вийти</button>
+</div>
+
     </nav>
     <header>
       <button id="toggle-music" class="music-btn">🎵 Увімкнути музику</button>
@@ -445,5 +457,6 @@
     </div>
     <script src="./assets/js/contact.js"></script>
     <script src="./assets/js/rules.js"></script>
+    <script src="./assets/js/auth-check.js"></script>
   </body>
 </html>
